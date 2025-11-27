@@ -8,23 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="skill.html">Skill</a></li>
-        <li><a href="other.html">Other</a></li>
-        <li><a href="contact.html">Contact Me</a></li>
-      </ul>
-    </nav>
-  </header>
-<body>
     <div class="portfolio-container">
-        <!-- LEFT SIDEBAR -->
+        <!-- LEFT PANEL -->
         <div class="left-panel">
             <div class="profile-section">
-                <img src="profile.jpg" alt="Profile Picture" width="200" height="200" class="profile-img">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-img">
                 <h2>Nishan</h2>
                 <p class="designation">UI/UX Designer</p>
             </div>
@@ -74,15 +62,18 @@
             </div>
         </div>
 
-        <!-- RIGHT CONTENT -->
+        <!-- RIGHT PANEL -->
         <div class="right-panel">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>About Me</li>
-                    <li>Skill</li>
-                    <li>Other</li>
-                    <li>Contact Me</li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skill.html">Skill</a></li>
+                    <li><a href="other.html">Other</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <li>
+                        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                    </li>
                 </ul>
             </nav>
 
@@ -116,20 +107,44 @@
                 <h3>My Skills</h3>
                 <div class="skills">
                     <div class="skill">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="50" height="50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
                         <p>Figma</p>
                     </div>
                     <div class="skill">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" width="50" height="50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
                         <p>HTML5</p>
                     </div>
                     <div class="skill">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" width="50" height="50">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
                         <p>JavaScript</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Load saved theme
+        let savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.documentElement.classList.add("dark-mode");
+            document.querySelector(".theme-toggle").textContent = "☀️";
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const button = document.querySelector(".theme-toggle");
+
+            html.classList.toggle("dark-mode");
+
+            if (html.classList.contains("dark-mode")) {
+                button.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                button.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
 </body>
 </html>

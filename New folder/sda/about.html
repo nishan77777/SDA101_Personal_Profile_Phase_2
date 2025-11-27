@@ -6,19 +6,41 @@
   <title>About Me - Nishan Sharma</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="skill.html">Skill</a></li>
-        <li><a href="other.html">Other</a></li>
-        <li><a href="contact.html">Contact Me</a></li>
-      </ul>
-    </nav>
-  </header>
+<div class="right-panel">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skill.html">Skill</a></li>
+                    <li><a href="other.html">Other</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </nav>
+<script>
+        // Load saved theme
+        let savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.documentElement.classList.add("dark");
+            document.querySelector(".theme-toggle").textContent = "☀️";
+        }
 
+        function toggleTheme() {
+            const html = document.documentElement;
+            const button = document.querySelector(".theme-toggle");
+
+            html.classList.toggle("dark");
+
+            if (html.classList.contains("dark")) {
+                button.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                button.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+    </script> 
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   <section class="about">
     <h1>About Me</h1>
     <p><em>Welcome to my portfolio!</em></p>
